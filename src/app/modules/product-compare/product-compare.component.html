@@ -1,0 +1,37 @@
+<div class="main-wrap">
+  <div class="inner-banner">
+    <img src="../../../assets/images/inner-banner.png" alt="Product Listing">
+    <h1>Product Compare</h1>
+  </div>
+  <div class="back-link-container">
+    <a routerLink="/products" class="back-link">Back To List</a>
+  </div>
+  <div class="table-container">
+    <table class="compare-table">
+      <thead class="thead-default">
+      <tr>
+        <th class="compare"></th>
+        <th *ngFor="let product of products">{{product.model}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="price">
+        <td scope="row" class="compare">Price</td>
+        <td class="text-center" *ngFor="let product of products">{{product.price}}</td>
+      </tr>
+      <tr class="RAM">
+        <td scope="row" class="compare">RAM</td>
+        <td *ngFor="let product of products">{{product.ram}}</td>
+      </tr>
+      <tr class="HDD">
+        <td scope="row" class="compare">HDD</td>
+        <td *ngFor="let product of products">{{product.hdd}}</td>
+      </tr>
+      <tr class="location">
+        <td scope="row" class="compare">Location</td>
+        <td *ngFor="let product of products">{{product.location}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

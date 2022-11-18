@@ -1,0 +1,61 @@
+.back-link-container{
+  display: flex;
+  justify-content: right;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  .back-link{
+    background: #66CCCC;
+    border-radius: 5px;
+    padding: 10px;
+    color: #FFFFFF;
+  }
+}
+.table-container {
+  max-width: 1680px;
+  margin-left: auto;
+  margin-right: auto;
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    .thead-default {
+      border-bottom: 1px solid #000000;
+      border-top: 1px solid #000000;
+      th {
+        width: 300px;
+        padding: 15px 15px;
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #000000;
+        border-right: 1px solid #000000;
+        text-align: center;
+        &:nth-child(1) {
+          width: 140px;
+        }
+      }
+      th:last-child{
+        border-right: 0;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even){
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+        td {
+          text-align: center;
+          padding: 8px 15px;
+          font-size: 16px;
+          line-height: 120%;
+          border-right: 1px solid #000000;
+        }
+        td:last-child {
+          border-right: 0;
+        }
+        td.compare {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

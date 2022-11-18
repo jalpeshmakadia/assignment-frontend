@@ -1,0 +1,123 @@
+<div class="main-wrap">
+  <div class="inner-banner">
+    <img src="../../../assets/images/inner-banner.png" alt="Product Listing">
+    <h1>Product Listing</h1>
+  </div>
+
+  <div class="product-filters">
+    <form [formGroup]="filterForm"  novalidate>
+      <fieldset id="ram-block">
+        <legend>Ram</legend>
+        <div class="list-checkbox-container">
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="2GB" name="monster" value="2GB" (change)="onRamCheckboxChange($event)" />
+            <label for="2GB">2GB</label><br>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="4GB" name="monster" value="4GB" (change)="onRamCheckboxChange($event)" />
+            <label for="4GB">4GB</label><br>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="8GB" name="monster" value="8GB" (change)="onRamCheckboxChange($event)" />
+            <label for="8GB">8GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="12GB" name="monster" value="12GB" (change)="onRamCheckboxChange($event)" />
+            <label for="12GB">12GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="16GB" name="monster" value="16GB" (change)="onRamCheckboxChange($event)" />
+            <label for="16GB">16GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="24GB" name="monster" value="24GB" (change)="onRamCheckboxChange($event)" />
+            <label for="24GB">24GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="32GB" name="monster" value="32GB" (change)="onRamCheckboxChange($event)" />
+            <label for="32GB">32GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="48GB" name="monster" value="48GB" (change)="onRamCheckboxChange($event)" />
+            <label for="48GB">48GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="64GB" name="monster" value="64GB" (change)="onRamCheckboxChange($event)" />
+            <label for="64GB">64GB</label>
+          </div>
+
+          <div class="list-checkbox">
+            <input type="checkbox" class="checkbox" id="96GB" name="monster" value="96GB" (change)="onRamCheckboxChange($event)" />
+            <label for="96GB">96GB</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset id="hdd-block">
+        <legend>Hard disk Type</legend>
+        <div class="select-container">
+          <select id="hdd-select" name="hdd" formControlName="hddFilter">
+            <option value="">Select</option>
+            <option value="SAS">SAS</option>
+            <option value="SATA">SATA</option>
+            <option value="SSD">SSD</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset id="location-block">
+        <legend>Location</legend>
+        <div class="select-container">
+          <select id="location-select" name="location" formControlName="locationFilter">
+            <option value="">Select</option>
+            <option *ngFor="let location of locationList" [value]="location">{{location}}</option>
+          </select>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="price-table-wrapper">
+
+    <div class="pricing-table" *ngFor="let product of products">
+      <div>
+        <h2 class="pricing-table__header">{{product.model}}</h2>
+        <h3 class="pricing-table__price">{{product.price}}</h3>
+        <a target="_blank" class="pricing-table__button" href="">
+          Join Now!
+        </a>
+        <div class="attribute">
+          <div class="attr-key">RAM</div>
+          <div class="attribute-value">{{product.ram}}</div>
+        </div>
+        <div class="attribute">
+          <div class="attr-key">HDD</div>
+          <div class="attribute-value">{{product.hdd}}</div>
+        </div>
+        <div class="attribute">
+          <div class="attr-key">Location</div>
+          <div class="attribute-value">{{product.location}}</div>
+        </div>
+      </div>
+      <div class="compare-checkbox">
+        <div class="attribute-value">
+          <input type="checkbox" id="addToCompare{{product.id}}" [disabled]="(compareProduct.length >= 5 && !(product.id|existCompare:compareProduct))" (change)="addProductToCompare($event, product)" [checked]="product.id|existCompare:compareProduct"/>
+          <label for="addToCompare{{product.id}}">Add to Compare</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="compare-button" *ngIf="compareProduct.length > 0">
+    <button class="btn" routerLink="/compare-product" [disabled]="compareProduct.length < 2">Compare <span class="compare-count">{{compareProduct.length}}</span></button>
+  </div>
+</div>
